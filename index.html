@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Page</title>
+    <link rel="shortcut icon" href="images/news-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <nav id="header">
+        <div>
+            <a id="logo">
+                <img src="/images/Logo.png" alt="Logo" style="width: 100px; height: auto;">
+            </a>
+        </div>
+        <ul id="menu">
+            <li>IPL</li>
+            <li>Finance</li>
+            <li>Politics</li>
+        </ul>
+        <div id="searchPart">
+            <input type="text" placeholder="search" id="searchinput">
+            <button id="btnSearch">Search</button>
+        </div>
+    
+        <img src="./images/Search - black.svg" alt="searchBar" id="searchBar">
+        <img src="/images/menu-cross.png" alt="menuCross" id="searchCross">
+    </nav>
+
+    <div id="mainBody">
+        <button id="filterBtn">Filter</button>
+        <div id="filterSec">
+            <br><br>
+            <div id="lang">Language</div>
+            <br>
+            <div id="changeLanguage">
+                <label for="hi" >Hindi (hi)</label>
+                <input type="radio" name="lang" class="box" id="hi" checked><br>
+                <label for="en">English (en)</label>
+                <input type="radio" name="lang" class="box" id="en"><br>
+                <label for="ar">Arabic (ar)</label>
+                <input type="radio" name="lang" class="box" id="ar"><br>
+                <label for="de">German (de)</label>
+                <input type="radio" name="lang" class="box" id="de"><br>
+                <label for="es">Spainish (es)</label>
+                <input type="radio" name="lang" class="box" id="es"><br>
+                <label for="fr">French (fr)</label>
+                <input type="radio" name="lang" class="box" id="fr"><br>
+                <br>
+            </div>
+            <button id="applyBtn">Apply</button>
+        </div>
+    
+        <section>
+            <input type="checkbox" name="darkMode" id="checkBox">
+            <label for="checkBox" id="modeLabel"></label>
+        </section>
+    
+        <main id="mainSection">
+            <div id="card">
+                <div class="card-img">
+                    <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
+                </div>
+                <div class="cardContent">
+                    <h3 id="newsTitle">This is the Title</h3>
+                    <h6 id="subHeading">End Gadget 26/08/2023</h6>
+                    <p id="smallDetail"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer id="footer">
+        Shubham Rawat &nbsp;&nbsp; 
+        <a href="#" target="_blank"><img src="/images/github_733609.png" alt="github" id="github"></a>
+        <a href="https://www.linkedin.com/in/shubham-rawat01" target="_blank"><img src="/images/linkedin_3536569.png" alt="linkedin" id="linkedin"></a>
+    </footer>
+
+    <script src="./news.js" type="module"></script>
+</body>
+</html>

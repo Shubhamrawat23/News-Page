@@ -1,0 +1,797 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ 
+:root{
+    --headerColor--:rgb(222, 231, 245);
+    --mainBodyColor--:white;
+    --borderColor--:black;
+    --textColor--:black;
+    --CardColor--:white;
+}
+
+/*-------------------Header----------------------*/
+#header{
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 5rem;
+    background-color: var(--headerColor--);
+    z-index: 50;
+}
+
+#logo{
+    height: 5rem;
+    position: absolute;
+    left: 8rem;
+    cursor: pointer;
+    top: -0.5rem;
+}
+
+#menu{
+    /*border: 2px solid cadetblue;*/
+    width: 30rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 25rem;
+    top: 1.5rem;
+}
+li{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: capitalize;
+    font-size: x-large;
+    font-weight:bold;
+    text-decoration: none;
+    color: rgb(162, 92, 6);
+    cursor: pointer;
+    &:hover{
+        color: rgb(192, 162, 162);
+    }
+    &:active{
+        color: rgb(162, 8, 8);
+    }
+}
+
+
+#searchinput{
+    border-radius: 3px;
+    padding: 0 5px;
+    position: absolute;
+    height: 1.5rem;
+    left: 66rem;
+    top: 1.5rem;
+}
+
+#btnSearch{
+    border-radius: 5px;
+    width: 6rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 78rem;
+    top: 1.5rem;
+    background-color: rgb(172, 236, 215);
+    cursor: pointer;
+}
+#btnSearch:hover{
+    box-shadow: 1px 1px 8px rgb(0, 255, 170);
+}
+#btnSearch:active{
+    background-color: rgb(18, 73, 55);
+    color: whitesmoke;
+} 
+
+
+
+#searchBar,#searchCross{
+    visibility:hidden;
+} 
+
+
+/*---------------------Filter------------------------*/
+#mainBody{
+    background-color: var(--mainBodyColor--);
+}
+
+#filterBtn{
+    width: 90px;
+    height: 40px;
+    border-radius: 50px;
+    position: relative;
+    left: 73rem;
+    top: 6.5rem;
+    cursor: pointer;
+    background-color: rgb(150, 186, 218);
+    color: rgb(238, 240, 243);
+    font-size: larger;
+}
+
+#filterSec{
+    margin-top: 70px;
+    display: none;
+}
+
+#lang{
+    width: 15rem;
+    padding: 5px;
+    position: relative;
+    top: 1rem;
+    left: 68rem;
+    border: solid var(--borderColor--);
+    color: var(--textColor--);
+    border-width: 2px 2px 2px 2px;
+    font-size: large;
+    cursor: pointer;
+}
+
+#changeLanguage{ 
+    background-color: rgb(245, 246, 247);
+    position: fixed;
+    margin-top: 2px;
+    left: 68rem;
+    border: 2px solid rgb(27, 26, 26);
+    width: 15rem;
+    height: 10rem;
+    text-align: left;
+    box-shadow: 1px 1px 10px black;
+    visibility: hidden;
+    transition: all .1s ease-out;
+    z-index: 5;
+}
+#changeLanguage.langpop{
+    visibility: visible;
+    margin-top: 15px;
+    transition: all .3s ease-in;
+}
+
+
+#applyBtn{
+    visibility: hidden;
+    position: relative;
+    left: 72rem;
+    top: 8rem;
+    border: 0px;
+    border-radius: 15px;
+    width: 110px;
+    height: 25px;
+    cursor: pointer;
+    background-color: rgb(69, 115, 100);
+    color: rgb(243, 243, 243);
+    transition: all .1s ease-out;
+    z-index: 6;
+}
+#applyBtn:active{
+    color: black;
+    background-color: rgb(220, 237, 252);
+}
+
+#applyBtn.applypop{
+    visibility: visible;
+    top: 9rem;
+    transition: all .3s ease-in;
+}
+
+#menuBar, #menuCross{
+    width: 45px;
+    height: 40px;
+}
+
+
+
+/*----------------------DarkModeButton---------------------*/
+section{
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    top: 6.5rem;
+    left: 79rem;
+    text-align: center;
+}
+
+#modeLabel{
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 30px;
+    height: 36px;
+    width: 80px;
+    cursor: pointer;
+}
+#modeLabel::before{
+    content: "";
+    background-color: rgb(2, 2, 2);
+    position: absolute;
+    top: 3px;
+    right: 53px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+}
+#checkBox{display: none;}
+
+#checkBox:checked + #modeLabel{
+    background-color: black;
+    border: 2px solid white;
+}
+#checkBox:checked + #modeLabel::before{ 
+    background-color: aliceblue;
+    left: 55px;
+}
+
+
+
+/*----------------------NewsCard-------------------------*/
+main{
+    padding: 2rem 8rem 8rem 8rem;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 1rem;
+}
+#card{
+    width: 20rem;
+    min-height: 25rem;
+    overflow: hidden;
+    box-shadow: 0 0 4px rgb(185, 219, 246);
+    transition: all 0.3s ease;
+    &:hover{
+        cursor: pointer;
+        box-shadow: 10px 1px 8px rgb(144, 170, 192);
+        transform: translateY(-5px);
+    }
+}
+
+#news-img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.cardContent{
+    padding: 1rem;
+    background-color: var(--CardColor--);
+    color: var(--textColor--);
+}
+
+#subHeading{
+    padding: 5px;
+    font-weight: bold;
+}
+
+#smallDetail{
+    padding: 10px;
+    font-size:medium;
+}
+
+.active{
+    color: rgb(162, 8, 8);
+}
+
+.darkMode{
+    --headerColor--:rgb(0, 17, 42);
+    --mainBodyColor--:black;
+    --borderColor--:white;
+    --textColor--:whitesmoke;
+    --CardColor--:black;
+}
+
+
+
+/*-------------------------Footer----------------------*/
+#footer{
+    text-align: center;
+}
+#github,#linkedin{
+    width: 20px;
+    height: 20px;
+  }
+  
+
+
+
+
+
+
+
+
+/*-----------------------Media Queries----------------------*/
+
+/*-------------Laptops---------------*/
+@media (max-width:1024px){
+    #logo{
+        left: 1rem;
+    }
+
+    #menu{
+        left: 16rem;
+        width: 28rem;
+    }
+
+    #searchinput{
+        left: 50rem;
+        width: 8rem;
+    }
+
+    #btnSearch{
+        left: 58.5rem;
+        width: 5rem;
+    }
+
+    #filterBtn{
+        width: 90px;
+        height: 42px;
+        left: 51rem;
+        font-size: x-large;
+    }
+
+    #lang{
+        left: 46rem;
+    }
+
+    #changeLanguage{
+        left: 46rem;
+    }
+
+    #applyBtn{
+        left: 50rem;
+    }
+
+    section{
+        left: 58rem;
+        width: 80px;
+    }
+    
+    #modeLabel{
+        width: 80px;
+        height: 40px;
+    }
+
+    #modeLabel::before{
+        width: 33px;
+        height: 33px;
+        right: 42px;
+        top: 3px;
+    }
+
+    #checkBox:checked + #modeLabel::before{ 
+        left: 41px;
+    }
+
+    main{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+}
+
+
+/*------------------- Tablets ----------------------*/
+@media (min-width:427px) and (max-width:769px){
+    #logo{
+        left: 0.5rem;
+    }
+
+    #menu{
+        left: 11rem;
+        width: 20rem;
+    }
+
+    #searchinput{
+        left: 36rem;
+        width: 7rem;
+    }
+
+    #btnSearch{
+        left: 43.5rem;
+        width: 4rem;
+    }
+
+    #filterBtn{
+        width: 78px;
+        height: 42px;
+        left: 37rem;
+        font-size: larger;
+    }
+
+    #lang{
+        left: 33rem;
+        width: 13rem;
+    }
+
+    #changeLanguage{
+        left: 33rem;
+        width: 13rem;
+    }
+
+    #applyBtn{
+        left: 37rem;
+        width: 100px;
+    }
+
+    section{
+        left: 43rem;
+        width: 72px;
+    }
+    
+    #modeLabel{
+        width: 75px;
+        height: 40px;
+    }
+
+    #modeLabel::before{
+        width: 33px;
+        height: 33px;
+        right: 35px;
+        top: 3px;
+    }
+
+    #checkBox:checked + #modeLabel::before{ 
+        left: 37px;
+    }
+
+    main{
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    
+    #news-img{
+        object-fit: fill;
+    }
+}
+
+
+
+/*----------Mobile Phones----------*/
+@media (max-width:426px){
+    #header{
+        height: 5rem;
+    }
+
+    #logo{
+        left: 1rem;
+    }
+
+    #menu{
+        display: none;
+    }
+
+    #searchPart{
+        min-width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        background-color: var(--headerColor--);
+        transform: translateX(100%);
+        transition: all 0.4s ease-in;
+        z-index: 51;
+    }
+
+    #searchinput{
+        position:relative;
+        left: 1rem;
+        width: 10rem;
+    }
+
+    #btnSearch{
+        position: relative;
+        left: 1rem;
+        width: 10rem;
+    }
+
+    #searchBar{
+        position: relative;
+        right: 2rem;
+        top: 0.5rem;
+        visibility: visible;
+        width: 30px;
+        height: 30px;
+        background-color: whitesmoke;
+        cursor: pointer;
+    }
+
+    .searchCross{
+        position: relative;
+        right: 2rem;
+        top: 0.5rem;
+        background-color: whitesmoke;
+        visibility: visible !important;
+        width: 30px;
+        height: 30px;
+        z-index: 52;
+        cursor: pointer;
+    }
+
+    #filterBtn{
+        width: 65px;
+        height: 35px;
+        left: 18rem;
+        font-size: large;
+    }
+
+    #lang{
+        left: 14.5rem;
+        width: 10rem;
+    }
+
+    #changeLanguage{
+        left: 14.5rem;
+        width: 10rem;
+    }
+
+    #applyBtn{
+        left: 17rem;
+        width: 80px;
+    }
+
+    section{
+        left: 22rem;
+        width: 72px;
+    }
+
+    #modeLabel{
+        width: 60px;
+        height: 30px;
+    }
+
+    #modeLabel::before{
+        width: 25px;
+        height: 25px;
+        right: 37px;
+    }
+
+    #checkBox:checked + #modeLabel::before{ 
+        left: 37px;
+    }
+
+
+    main{
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    
+    #news-img{
+        object-fit: fill;
+    }
+}
+
+
+@media (max-width:376px) {
+    #header{
+        height: 5rem;
+    }
+
+    #logo{
+        left: 0.5rem;
+        font-size:large;
+    }
+
+    #menu{
+        display: none;
+    }
+
+    #searchPart{
+        min-width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        background-color: var(--headerColor--);
+        transform: translateX(100%);
+        transition: all 0.4s ease-in;
+        z-index: 51;
+    }
+
+    #searchinput{
+        position:relative;
+        left: 1rem;
+        width: 10rem;
+    }
+
+    #btnSearch{
+        position: relative;
+        left: 1rem;
+        width: 10rem;
+    }
+
+    #searchBar{
+        position: relative;
+        right: 2rem;
+        top: 0.5rem;
+        visibility: visible;
+        width: 30px;
+        height: 30px;
+        background-color: whitesmoke;
+        cursor: pointer;
+    }
+
+    .searchCross{
+        position: relative;
+        right: 2rem;
+        top: 0.5rem;
+        background-color: whitesmoke;
+        visibility: visible !important;
+        width: 30px;
+        height: 30px;
+        z-index: 52;
+        cursor: pointer;
+    }
+
+    #filterBtn{
+        width: 65px;
+        height: 35px;
+        left: 15rem;
+        font-size: large;
+    }
+
+    #lang{
+        left: 14rem;
+        width: 7rem;
+    }
+
+    #changeLanguage{
+        left: 13rem;
+        width: 9rem;
+    }
+
+    #applyBtn{
+        left: 15.5rem;
+        width: 70px;
+    }
+
+    section{
+        left: 19rem;
+        width: 72px;
+    }
+
+    #modeLabel{
+        width: 60px;
+        height: 30px;
+    }
+
+    #modeLabel::before{
+        width: 25px;
+        height: 25px;
+        right: 36px;
+    }
+
+    #checkBox:checked + #modeLabel::before{ 
+        left: 36px;
+    }
+
+
+    main{
+        padding-left: 2rem;
+        padding-right: 1rem;
+    }
+    
+    #news-img{
+        object-fit: fill;
+    }
+}
+
+
+@media (max-width:320px) {
+    #header{
+        height: 5rem;
+    }
+
+    #logo{
+        left: 0.5rem;
+    }
+
+    #menu{
+        display: none;
+    }
+
+    #searchPart{
+        min-width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        background-color: var(--headerColor--);
+        transform: translateX(100%);
+        transition: all 0.4s ease-in;
+        z-index: 51;
+    }
+
+    #searchinput{
+        position:relative;
+        left: 1rem;
+        width: 10rem;
+    }
+
+    #btnSearch{
+        position: relative;
+        left: 1rem;
+        width: 10rem;
+    }
+
+    #searchBar{
+        position: relative;
+        right: 2rem;
+        top: 0.5rem;
+        visibility: visible;
+        width: 30px;
+        height: 30px;
+        background-color: whitesmoke;
+        cursor: pointer;
+    }
+
+    .searchCross{
+        position: relative;
+        right: 2rem;
+        top: 0.5rem;
+        background-color: whitesmoke;
+        visibility: visible !important;
+        width: 30px;
+        height: 30px;
+        z-index: 52;
+        cursor: pointer;
+    }
+
+
+    #filterBtn{
+        width: 50px;
+        height: 30px;
+        left: 12rem;
+        font-size: small;
+    }
+
+    #lang{
+        left: 10rem;
+        width: 7rem;
+    }
+
+    #changeLanguage{
+        left: 9.5rem;
+        width: 8rem;
+    }
+
+    #applyBtn{
+        left: 12rem;
+        width: 60px;
+    }
+
+    section{
+        left: 15rem;
+        width: 80px;
+    }
+
+    #modeLabel{
+        width: 60px;
+        height: 30px;
+    }
+
+    #modeLabel::before{
+        width: 25px;
+        height: 25px;
+        right: 40px;
+    }
+
+    #checkBox:checked + #modeLabel::before{ 
+        left: 40px;
+    }
+
+
+    main{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    #news-img{
+        object-fit:fill ;
+    }
+}
