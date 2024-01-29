@@ -227,7 +227,6 @@ section{
 main{
     padding: 2rem 8rem 8rem 8rem;
     margin-top: 100px;
-    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: start;
@@ -268,10 +267,22 @@ main{
     font-size:medium;
 }
 
+#NoResult{
+    color: var(--textColor--);
+    height: 25rem;
+    width: 100%;
+    position: relative;
+    top: 12rem;
+    text-align: center;
+}
+
+
+
+
+
 .active{
     color: rgb(162, 8, 8);
 }
-
 .darkMode{
     --headerColor--:rgb(0, 17, 42);
     --mainBodyColor--:black;

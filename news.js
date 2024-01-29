@@ -26,14 +26,37 @@ window.addEventListener("load",()=>fetchNews())
     try {
         fetch(`${URL_LINK}&q=${value}&apiKey=${API_KEY}`)
         .then((res)=>res.json())
-        .then((data)=>cloningCards(data.articles))
+        .then((data)=>{
+            if(data.totalResults===0) {
+                return handleNoResult(value);
+            }
+            else{
+               return cloningCards(data.articles)
+            }
+        })
     } catch (error) {
         console.log(error)
     }
 }
 
 
+
+//-----------------Handling If there is no articles--------------
+let heading = document.createElement("h1")
+function handleNoResult(topic){
+    mainSection.style.display="none"
+    heading.style.display = "block"
+    heading.setAttribute("id","NoResult")
+    heading.innerHTML = `Sorry --No Results of  ${topic}-- Found`
+    mainBody.appendChild(heading)
+}
+
+
+
+//------------------Display all cards of News---------------------
 function cloningCards(articles){
+    mainSection.style.display = "flex"
+    heading.style.display = "none"
     const card = document.getElementById("card");
     mainSection.innerHTML="";//empty iss liye kara jise jo news hai vo ek ke upar ek naa hoti rahe
     
@@ -53,7 +76,7 @@ function fillingCardDetails(cardClone,value){
     const subHeading = cardClone.querySelector('#subHeading');
     const smallDetail = cardClone.querySelector('#smallDetail');
     
-    console.log(value);
+    //console.log(value);
     newImg.src = value.urlToImage;
     newsTitle.innerHTML = value.title;
     smallDetail.innerHTML = value.description
@@ -86,12 +109,15 @@ searchBtn.addEventListener("click",()=>{
     fetchNews(searchInput.value)
     headingClicked?.classList.remove('active')
     headingClicked = null;
+    searchInput.value =""
 })
 
 const logo = document.getElementById('logo')
 logo.addEventListener("click",()=>{
     fetchNews()
-    headingClicked.classList.remove("active")
+    if (headingClicked!= null) {
+        headingClicked.classList.remove("active")
+    }
 })
 
 
@@ -107,7 +133,7 @@ let langFilter = "off"
 const filterBtn = document.getElementById("filterBtn");
 filterBtn.addEventListener("click",()=>{
     mainFilter=="off"?
-    (filterSec.style.display="block",mainFilter="on",mainSection.style.marginTop="5px",mainSection.style.filter="blur(10px)",main.style.pointerEvents="none") 
+    (filterSec.style.display="block",mainFilter="on",mainSection.style.marginTop="5px",mainSection.style.filter="blur(10px)",mainSection.style.pointerEvents="none") 
     : (filterSec.style.display="none",mainFilter="off",mainSection.style.marginTop="100px",mainSection.style.filter="none",mainSection.style.pointerEvents="all")
 })
 
@@ -132,7 +158,9 @@ ApplyBtn.addEventListener("click",()=>{
     filterSec.style.display="none";
     mainSection.style.marginTop="100px",mainSection.style.filter="none",mainSection.style.pointerEvents="all",
     ApplyBtn.classList.remove("applypop")
-    headingClicked.classList.remove("active");
+    if (headingClicked!= null) {
+        headingClicked.classList.remove("active")
+    }
 })
 
 
