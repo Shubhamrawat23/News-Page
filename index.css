@@ -382,7 +382,7 @@ main{
 
 
 /*------------------- Tablets ----------------------*/
-@media (min-width:427px) and (max-width:769px){
+@media (max-width:768px){
     #logo{
         left: 0.5rem;
     }
